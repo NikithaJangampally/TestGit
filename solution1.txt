@@ -1,0 +1,54 @@
+#include<stdio.h>
+int sos(int i , int j ,int k , int n,int ar[])
+{
+  int sum;
+  for( i = 0 ; i<j ;)
+  {
+      sum = ar[i] + ar[j];
+      if( sum > k)
+      {
+        j--;
+      }else if( sum < k)
+      {
+        i++;
+      }else if( sum == k )
+      {
+        printf("Value equal to sum of ar[%d]  = %d and ar[%d] = %d",i,ar[i],j,ar[j]);
+        return 1;
+      }
+  }
+  return 0;
+  }
+int main()
+  {
+  int n ;
+  printf("Enter vakues of Arrays = ");
+  scanf("%d",&n);
+  int ar[n],i,j,k,x;
+  printf("Enter the no which is to be searched in addition of Two Number = ");
+  scanf("%d",&x);
+  printf("Enter the value of Array \n");
+  for( i = 0 ; i <=n-1;i++)
+  {
+    printf("arr[%d] = ",i);
+    scanf("%d",&ar[i]);
+  }
+  
+  for( i = 0 ; i <=n-1;i++)
+  {
+     for( j = 0 ; j <=n-i-1;j++)
+     {
+     if( ar[j]>ar[j+1])
+     {
+       
+       ar[j] = ar[j]^ar[j+1];
+       ar[j+1] = ar[j]^ar[j+1];
+       ar[j] = ar[j]^ar[j+1];
+    }
+    }
+  }
+  k = x ;
+  j = n-1;
+  sos(i,j,k,n,ar);
+  return 0 ;
+}
